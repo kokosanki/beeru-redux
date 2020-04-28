@@ -1,0 +1,49 @@
+.nav {
+  padding: 10px;
+  background-color: $main-color;
+  color: #fff;
+  font-family: "Spartan", sans-serif;
+  font-weight: normal;
+
+  &__logo {
+    font-size: 38px;
+    color: #fff;
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__links {
+    text-align: center;
+    height: calc(100vh - 65px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 50px;
+  }
+
+  &__link {
+    font-size: 30px;
+    margin: 15px 0;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+@media only screen and (min-width: 570px) {
+  .nav {
+    &__links {
+      height: 45px;
+      width: 300px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding-bottom: 0;
+      align-items: center;
+    }
+  }
+}

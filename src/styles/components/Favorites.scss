@@ -1,0 +1,31 @@
+.Favorites {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 60px);
+    align-items: center;
+    &__noFavorites {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      margin-left: 10px;
+      margin-right: 10px;
+      .noFavorites__text {
+        font-family: $main-font;
+        margin-bottom: 10px;
+        font-size: 20px;
+        text-align: center;
+      }
+      .noFavorites__img {
+        width: calc(100vw - 20px);
+      }
+    }
+  }
+
+  @media only screen and (min-width: 770px) {
+      .Favorites {
+        .noFavorites__img {
+            width: 50vw;
+          }
+      }
+      }
