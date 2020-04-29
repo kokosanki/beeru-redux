@@ -13,7 +13,7 @@ const Products = ({ dispatch }) => {
       dispatch(getProducts(result.data));
     };
     fetchData();
-  });
+  }, []);
 
   return (
     <ul className="Products">
