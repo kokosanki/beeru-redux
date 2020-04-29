@@ -1,14 +1,14 @@
 import React from "react";
 import Product from "./Product";
 import { connect, useSelector } from "react-redux";
+import beer from "../assets/beer.jpg";
 
 const Favorites = () => {
-  const products = useSelector((state) => state.products);
-  const favorites = useSelector((state) => state.favorites);
+  const { products, favorites } = useSelector((state) => state);
 
-  let favoriteBeers = [];
-  const res = products.filter((product) => favorites.includes(product.id));
-  favoriteBeers = res;
+  const favoriteBeers = products.filter((product) =>
+    favorites.includes(product.id)
+  );
 
   return (
     (!favorites.length && (
@@ -20,22 +20,14 @@ const Favorites = () => {
           <img
             className="noFavorites__img"
             alt="No favorite beers found"
-            src="../assets/beer.jpg"
+            src={beer}
           ></img>
         </div>
       </div>
     )) || (
       <ul className="Products">
         {favoriteBeers.map((item) => (
-          <Product
-            isActive={true}
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            src={item.image_url}
-            tagline={item.tagline}
-            description={item.description}
-          />
+          <Product key={item.id} {...item} />
         ))}
       </ul>
     )

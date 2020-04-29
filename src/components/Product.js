@@ -1,17 +1,9 @@
 import React from "react";
 import { connect, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../actions/stateActions";
+import heart1 from "../assets/heart1.png";
 
-const Product = ({
-  name,
-  tagline,
-  description,
-  id,
-  src,
-  toggleFavorite,
-  isActive,
-  dispatch,
-}) => {
+const Product = ({ name, tagline, description, id, image_url, dispatch }) => {
   const favorites = useSelector((state) => state.favorites);
 
   const handleClick = (product) => {
@@ -26,7 +18,7 @@ const Product = ({
     <article className="Products__product">
       <div className="product__presentation">
         <div className="product__left">
-          <img className="product__image" alt={id} src={src} />
+          <img className="product__image" alt={id} src={image_url} />
         </div>
         <div className="product__right">
           <h2 className="product__tag">{tagline}</h2>
@@ -40,7 +32,7 @@ const Product = ({
           className={"product__isFavorite"}
           onClick={() => handleClick(id)}
           alt="Add to favorite"
-          src="../assets/heart1.png"
+          src={heart1}
           style={{ opacity: favorites.includes(id) ? "1" : "0.5" }}
         />
       </div>

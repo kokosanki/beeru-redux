@@ -7,30 +7,20 @@ import axios from "axios";
 const Products = ({ dispatch }) => {
   const products = useSelector((state) => state.products);
 
+  const fetchData = async () => {
+    const result = await axios("https://api.punkapi.com/v2/beers");
+    dispatch(getProducts(result.data));
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("https://api.punkapi.com/v2/beers");
-      dispatch(getProducts(result.data));
-    };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <ul className="Products">
-      {products ? (
-        products.map((product) => (
-          <Product
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            src={product.image_url}
-            tagline={product.tagline}
-            description={product.description}
-          />
-        ))
-      ) : (
-        <div></div>
-      )}
+      {products &&
+        products.map((product) => <Product key={product.id} {...product} />)}
     </ul>
   );
 };

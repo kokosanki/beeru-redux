@@ -9,21 +9,20 @@ const navItems = [
 const mq = window.matchMedia("(max-width: 570px)");
 
 const NavLinks = ({ toggleNavigation }) => {
-  const menu = navItems.map((item) => (
-    <li className="nav__link" key={item.name}>
-      <NavLink
-        onClick={toggleNavigation}
-        to={item.path}
-        exact={item.exact || false}
-      >
-        {item.name}
-      </NavLink>
-    </li>
-  ));
-  return mq.matches ? (
-    <ul className="nav__links invisible">{menu}</ul>
-  ) : (
-    <ul className="nav__links">{menu}</ul>
+  return (
+    <ul className={`nav__links  ${mq.matches && "invisible"}`}>
+      {navItems.map((item) => (
+        <li className="nav__link" key={item.name}>
+          <NavLink
+            onClick={toggleNavigation}
+            to={item.path}
+            exact={item.exact || false}
+          >
+            {item.name}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
   );
 };
 
